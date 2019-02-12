@@ -1,6 +1,7 @@
 package com.heiko.stripeprogressbar;
 
 import android.content.Context;
+import android.content.res.TypedArray;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
@@ -21,6 +22,7 @@ public class StripeProgressBar extends FrameLayout {
     private ImageView mBotIv;
     private int maxProgress = 100;
     private int progress = 0;
+    private int progressRadius;
 
     public StripeProgressBar(@NonNull Context context) {
         super(context);
@@ -42,7 +44,14 @@ public class StripeProgressBar extends FrameLayout {
         View root = LayoutInflater.from(context).inflate(R.layout.layout_stripe_progress_bar, this);
         mProgressIv = root.findViewById(R.id.p_cover_iv);
         mBotIv = root.findViewById(R.id.p_bot_iv);
-        mProgressIv.setRadiusDp(5);
+
+        TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.StripeProgressBar);
+
+        int progressRadiusDP = ta.getColor(R.styleable.StripeProgressBar_progress_radius, 10);
+        progressRadius = Utils.dp2px(getContext(), progressRadiusDP);
+        ta.recycle();
+
+        mProgressIv.setRadiusPx(progressRadius);
     }
 
     /**
@@ -63,8 +72,10 @@ public class StripeProgressBar extends FrameLayout {
         this.progress = progress;
         float percent = this.progress / (maxProgress * 1.0F);
         final int ivWidth = mBotIv.getWidth();
+        //final int initWidth = (int) (ivWidth * 0.08);
+        final int calcWidth = ivWidth - progressRadius * 2;
         RelativeLayout.LayoutParams lp = (RelativeLayout.LayoutParams) mProgressIv.getLayoutParams();
-        int marginEnd = (int) ((1 - percent) * ivWidth);
+        int marginEnd = (int) ((1 - percent) * calcWidth);
         lp.width = ivWidth - marginEnd;
         mProgressIv.setLayoutParams(lp);
         mProgressIv.postInvalidate();

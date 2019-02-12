@@ -41,12 +41,6 @@ public class MainActivity extends AppCompatActivity {
             super.run();
             while (!isInterrupted()) {
                 progress++;
-                try {
-                    Thread.sleep(50);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    break;
-                }
                 if (progress > 100) {
                     progress = 0;
                 }
@@ -58,6 +52,12 @@ public class MainActivity extends AppCompatActivity {
                         tvProgpress.setText(p + "%");
                     }
                 });
+                try {
+                    Thread.sleep(100);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                    break;
+                }
             }
         }
     }

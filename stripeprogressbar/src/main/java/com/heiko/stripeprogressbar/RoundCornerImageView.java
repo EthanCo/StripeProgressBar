@@ -1,12 +1,10 @@
 package com.heiko.stripeprogressbar;
 
 import android.content.Context;
-import android.content.res.Resources;
 import android.graphics.Canvas;
 import android.graphics.Path;
 import android.graphics.RectF;
 import android.util.AttributeSet;
-import android.util.TypedValue;
 
 /**
  * 圆角图形
@@ -29,7 +27,7 @@ public class RoundCornerImageView extends android.support.v7.widget.AppCompatIma
     }
 
     public void setRadiusDp(float dp) {
-        mRadius = dp2px(dp, getResources());
+        mRadius = Utils.dp2px(getContext(),dp);
         postInvalidate();
     }
 
@@ -45,9 +43,5 @@ public class RoundCornerImageView extends android.support.v7.widget.AppCompatIma
         mClipPath.addRoundRect(mRect, mRadius, mRadius, Path.Direction.CW);
         canvas.clipPath(mClipPath);
         super.onDraw(canvas);
-    }
-
-    private float dp2px(float value, Resources resources) {
-        return TypedValue.applyDimension(TypedValue.COMPLEX_UNIT_DIP, value, resources.getDisplayMetrics());
     }
 }
