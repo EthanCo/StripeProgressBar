@@ -2,5 +2,7 @@
 <resources>
     <declare-styleable name="StripeProgressBar">
         <attr name="progress_radius" format="dimension" />
+        <attr name="progress_background" format="color" />
+        <attr name="progress_image" format="reference" />
     </declare-styleable>
 </resources>

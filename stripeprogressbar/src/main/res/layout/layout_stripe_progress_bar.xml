@@ -1,20 +1,18 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="200dp"
-    android:layout_height="20dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
     android:layout_centerInParent="true"
     android:background="@android:color/transparent">
 
     <ImageView
         android:id="@+id/p_bot_iv"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:src="@drawable/shape_round_corner_bottom" />
+        android:layout_height="match_parent" />
 
     <com.heiko.stripeprogressbar.RoundCornerImageView
         android:id="@+id/p_cover_iv"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="centerCrop"
-        android:src="@drawable/img_stripe_progress" />
+        android:scaleType="centerCrop" />
 </RelativeLayout>

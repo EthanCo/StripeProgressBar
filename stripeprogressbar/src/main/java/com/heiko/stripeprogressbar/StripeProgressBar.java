@@ -2,9 +2,13 @@ package com.heiko.stripeprogressbar;
 
 import android.content.Context;
 import android.content.res.TypedArray;
+import android.graphics.Color;
+import android.graphics.drawable.Drawable;
+import android.graphics.drawable.GradientDrawable;
 import android.support.annotation.NonNull;
 import android.support.annotation.Nullable;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.widget.FrameLayout;
@@ -18,11 +22,13 @@ import android.widget.RelativeLayout;
  * @date 2019/2/12
  */
 public class StripeProgressBar extends FrameLayout {
+    public static final String TAG = "StripeProgressBar";
     private RoundCornerImageView mProgressIv;
     private ImageView mBotIv;
     private int maxProgress = 100;
     private int progress = 0;
     private int progressRadius;
+    private Drawable progressImage;
 
     public StripeProgressBar(@NonNull Context context) {
         super(context);
@@ -47,11 +53,28 @@ public class StripeProgressBar extends FrameLayout {
 
         TypedArray ta = context.obtainStyledAttributes(attrs, R.styleable.StripeProgressBar);
 
-        int progressRadiusDP = ta.getColor(R.styleable.StripeProgressBar_progress_radius, 10);
-        progressRadius = Utils.dp2px(getContext(), progressRadiusDP);
+        int defProgressRadius = Utils.dp2px(getContext(), 10);
+        progressRadius = (int) ta.getDimension(R.styleable.StripeProgressBar_progress_radius, defProgressRadius);
+        int progressBackgroundColor = ta.getColor(R.styleable.StripeProgressBar_progress_background, Color.parseColor("#d9d9d9"));
+        progressImage = ta.getDrawable(R.styleable.StripeProgressBar_progress_image);
+        if (progressImage == null) {
+            throw new IllegalArgumentException("app:progressImage must not null.");
+        }
         ta.recycle();
 
+        Log.i(TAG, "defProgressRadius:" + defProgressRadius + " progressRadius:" + progressRadius);
+        mProgressIv.setImageDrawable(progressImage);
         mProgressIv.setRadiusPx(progressRadius);
+        GradientDrawable drawable = new GradientDrawable();
+        //设置圆角大小
+        drawable.setCornerRadius(progressRadius);
+        //设置边缘线的宽以及颜色
+        //drawable.setStroke(1, Color.parseColor("#FF00FF"));
+        //设置shape背景色
+        drawable.setColor(progressBackgroundColor);
+        //设置到TextView中
+        mBotIv.setImageDrawable(drawable);
+        setProgress(0);
     }
 
     /**
