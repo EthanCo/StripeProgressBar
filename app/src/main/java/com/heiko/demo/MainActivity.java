@@ -23,7 +23,6 @@ public class MainActivity extends AppCompatActivity {
         btnStart = findViewById(R.id.btn_start);
         tvProgpress = findViewById(R.id.tv_progress);
         stripeProgressBar = findViewById(R.id.stripe_progress_bar);
-        stripeProgressBar.setMax(100);
 
         btnStart.setOnClickListener(new View.OnClickListener() {
             @Override

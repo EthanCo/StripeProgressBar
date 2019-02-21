@@ -25,7 +25,7 @@ public class StripeProgressBar extends FrameLayout implements IProgress {
     public static final String TAG = "StripeProgressBar";
     private RoundCornerImageView mProgressIv;
     private ImageView mBotIv;
-    private int maxProgress = 100;
+    private int maxProgress;
     private int progress = 0;
     private int progressRadius;
     private Drawable progressImage;
@@ -57,6 +57,7 @@ public class StripeProgressBar extends FrameLayout implements IProgress {
         progressRadius = (int) ta.getDimension(R.styleable.StripeProgressBar_progress_radius, defProgressRadius);
         int progressBackgroundColor = ta.getColor(R.styleable.StripeProgressBar_progress_background, Color.parseColor("#d9d9d9"));
         progressImage = ta.getDrawable(R.styleable.StripeProgressBar_progress_image);
+        maxProgress = ta.getInteger(R.styleable.StripeProgressBar_progress_max,100);
         if (progressImage == null) {
             throw new IllegalArgumentException("app:progressImage must not null.");
         }
