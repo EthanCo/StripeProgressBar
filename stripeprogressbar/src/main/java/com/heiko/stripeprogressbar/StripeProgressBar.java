@@ -21,7 +21,7 @@ import android.widget.RelativeLayout;
  * @author Heiko
  * @date 2019/2/12
  */
-public class StripeProgressBar extends FrameLayout {
+public class StripeProgressBar extends FrameLayout implements IProgress {
     public static final String TAG = "StripeProgressBar";
     private RoundCornerImageView mProgressIv;
     private ImageView mBotIv;
@@ -82,6 +82,7 @@ public class StripeProgressBar extends FrameLayout {
      *
      * @param maxProgress
      */
+    @Override
     public void setMax(int maxProgress) {
         this.maxProgress = maxProgress;
     }
@@ -91,6 +92,7 @@ public class StripeProgressBar extends FrameLayout {
      *
      * @param progress
      */
+    @Override
     public void setProgress(int progress) {
         this.progress = progress;
         float percent = this.progress / (maxProgress * 1.0F);
@@ -102,5 +104,15 @@ public class StripeProgressBar extends FrameLayout {
         lp.width = ivWidth - marginEnd;
         mProgressIv.setLayoutParams(lp);
         mProgressIv.postInvalidate();
+    }
+
+    /**
+     * 获取当前进度
+     *
+     * @return
+     */
+    @Override
+    public int getProgress() {
+        return this.progress;
     }
 }
