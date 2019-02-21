@@ -2,7 +2,6 @@
 Android 斜纹进度条，可自定义进度条图片。  
 
 ![StripeProgressBar.webp](StripeProgressBar.webp)
-![StripeProgressBar.gif](StripeProgressBar.gif)
 
 ### 添加依赖
 #### Step 1. Add the JitPack repository to your build file
