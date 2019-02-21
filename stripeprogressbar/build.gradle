@@ -36,7 +36,7 @@ dependencies {
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
 
-ext.GROUP = "com.kit"
-ext.VERSION_NAME = android.defaultConfig.versionName
-ext.POM_ARTIFACT_ID = "stripe_progressbar"
-apply from: "${project.rootDir}/gradle_maven.gradle"
+//ext.GROUP = "com.kit"
+//ext.VERSION_NAME = android.defaultConfig.versionName
+//ext.POM_ARTIFACT_ID = "stripe_progressbar"
+//apply from: "${project.rootDir}/gradle_maven.gradle"
