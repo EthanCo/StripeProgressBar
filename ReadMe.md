@@ -16,7 +16,7 @@ Android 斜纹进度条，可自定义进度条图片。
 #### Step 2. Add the dependency
 
 	dependencies {
-        implementation 'com.github.EthanCo:StripeProgressBar:v1.0.0'
+        implementation 'com.github.EthanCo:StripeProgressBar:v1.0.3'
 	}
 
 ### 使用
