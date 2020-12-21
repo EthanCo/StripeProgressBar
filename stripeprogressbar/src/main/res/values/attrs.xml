@@ -7,7 +7,7 @@
         <attr name="progress_background" format="color" />
         <!--进度条图片-->
         <attr name="progress_image" format="reference" />
-        <!--进度条最大进度-->
+        <!--进度条最大进度 -->
         <attr name="progress_max" format="integer" />
     </declare-styleable>
 </resources>
