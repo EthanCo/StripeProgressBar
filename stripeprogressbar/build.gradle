@@ -9,8 +9,8 @@ android {
     defaultConfig {
         minSdkVersion 15
         targetSdkVersion 27
-        versionCode 102
-        versionName "1.0.2"
+        versionCode 103
+        versionName "1.0.3"
 
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
 
@@ -33,3 +33,8 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
+
+ext.GROUP="com.kit"
+ext.VERSION_NAME=android.defaultConfig.versionName
+ext.POM_ARTIFACT_ID="stripe_progressbar"
+apply from: "${project.rootDir}/gradle_maven.gradle"
